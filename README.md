@@ -16,6 +16,7 @@ We are using JavaScript, .json files for data, API's from various locations.
 ## Change Log
 9:50am - Location API is fully functioning
 10:31am - Weather API is fully functioning
+11:25am - Eventbrite API is fully functioning
 
 
 
@@ -34,3 +35,9 @@ Estimate of time needed to complete: 1 hour
 Start time: 9:50am
 Finish time: 10:31am
 Actual time needed to complete: 41 minutes
+
+Number and name of feature: Eventbrite API
+Estimate of time needed to complete: 1 hour
+Start time: 10:45am
+Finish time: 11:25am
+Actual time needed to complete: 40 minutes
