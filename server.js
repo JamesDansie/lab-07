@@ -12,6 +12,10 @@ app.use(cors());
 const PORT = process.env.PORT;
 
 const GEOCODE_API_KEY = process.env.googleMapsAPI;
+const WEATHER_API_KEY = process.env.darkSkyAPI;
+
+let latTemp = '';
+let longTemp = '';
 
 function Location(query, format, lat, lng){
   this.search_query = query;
@@ -27,7 +31,7 @@ app.get('/location', (request, response) => {
     console.log(urlToVisit);
     // superagent.get('url as a string');
     superagent.get(urlToVisit).then(responseFromSuper => {
-      console.log('stuff', responseFromSuper.body);
+      console.log('stuff for location', responseFromSuper.body);
 
       // I simply replaced my geodata require, with the data in the body of my superagent response
       const geoData = responseFromSuper.body;
@@ -37,6 +41,9 @@ app.get('/location', (request, response) => {
       const formatted = specificGeoData.formatted_address;
       const lat = specificGeoData.geometry.location.lat;
       const lng = specificGeoData.geometry.location.lng;
+
+      latTemp = lat;
+      longTemp = lng;
 
       const newLocation = new Location(query, formatted, lat, lng)
       console.log(newLocation);
@@ -51,20 +58,23 @@ app.get('/location', (request, response) => {
 app.get('/weather', getWeather)
 
 function getWeather(request, response){
-  try{
-    const weatherData = require('./data/darksky.json');
+    // const weatherData = require('./data/darksky.json');
+    const urlToVisit = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${latTemp},${longTemp}`
 
-    const eightDays = weatherData.daily.data;
+    superagent.get(urlToVisit).then(responseFromSuper => {
+      console.log('stuff for weather', responseFromSuper.body);
 
-    const formattedDays = eightDays.map(
-      day => new Day(day.summary, day.time)
-      );
+      const weatherData = responseFromSuper.body;
 
-    response.send(formattedDays)
-  } catch (e) {
-    console.error(e);
-    response.status(500).send(e.message);
-  }
+      const eightDays = weatherData.daily.data;
+
+      const formattedDays = eightDays.map(day => new Day(day.summary, day.time));
+
+      response.send(formattedDays);
+    }).catch(error => {
+    response.status(500).send(error.message);
+    console.error(error);
+  })
 }
 
 function Day (summary, time){

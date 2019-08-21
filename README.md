@@ -1,26 +1,23 @@
 # lab-07
 
-Authors: James Dansie & Sarah Gilliam
+### Authors: James Dansie & Sarah Gilliam
 
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+Web application that allows a user to enter an input (city name), and see output relating to the user's input.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+To obtain a working app on your machine: Run npm install
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+We are using JavaScript, .json files for data, API's from various locations.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
+9:50am - Location API is fully functioning
+10:31am - Weather API is fully functioning
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource.
 
-## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
 
 
 
@@ -31,3 +28,9 @@ Estimate of time needed to complete: 1 hour
 Start time: 9:15am
 Finish time: 9:50am
 Actual time needed to complete: 35 minutes
+
+Number and name of feature: Dark Sky API
+Estimate of time needed to complete: 1 hour
+Start time: 9:50am
+Finish time: 10:31am
+Actual time needed to complete: 41 minutes
