@@ -11,6 +11,8 @@ app.use(cors());
 
 const PORT = process.env.PORT;
 
+const googleAPI = process.env.googleMapsAPI;
+
 function Location(query, format, lat, lng){
   this.search_query = query;
   this.formatted_query = format;
@@ -21,8 +23,7 @@ function Location(query, format, lat, lng){
 app.get('/location', (request, response) => {
     const query = request.query.data; //seattle
 
-    const urlToVisit = `https://maps.googleapis.com/maps/api/geocode/json?address=${request.query.data}&key=AIzaSyBt-Y_4KtCaKJtFOMkhzegnVxwVy4KrNic`;
-
+    const urlToVisit = `https://maps.googleapis.com/maps/api/geocode/json?address=${request.query.data}&key=${googleAPI}`
     // superagent.get('url as a string');
     superagent.get(urlToVisit).then(responseFromSuper => {
       console.log('stuff', responseFromSuper.body);
