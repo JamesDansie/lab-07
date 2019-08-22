@@ -32,7 +32,7 @@ function Day(summary, time){
 function Eventbrite(url, name, date, summary){
   this.link = url;
   this.name = name;
-  this.event_date = date;
+  this.event_date = new Date(date).toDateString();
   this.summary = summary;
 }
 
